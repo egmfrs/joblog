@@ -1,6 +1,0 @@
-2025-03-10 14:42:41 - 02A In (wales and non wales) - 4.0
-2025-03-10 17:03:20 - 09A doc strikeout fix investigation / collab with OF - 3.0
-2025-03-10 22:27:46 - 09A further tests and deployment (with OF) - 2.5
-2025-03-12 15:46:55 - redirect to quote (in test ftp) - 2.5
-2025-03-14 14:54:59 - Deleted notes for olivia on project 305850 as pm wasnt happy - 0.5
-2025-03-18 23:09:00 - Just a reminder to tell OF client logo changes in TEST and principle to principal. Blue Dot might be best for 2 weeks on monday for safety as i will be away next week - 0.0
