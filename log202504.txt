@@ -1,7 +1,0 @@
-2025-04-01 13:35:55 - PDF 0kb investigation for Paul - 1.0
-2025-04-01 19:47:42 - PDF investigation - findind all 0kb items now (drive share mapping) - 2.0
-2025-04-07 13:21:10 - log4net logging - 16.0
-2025-04-07 13:21:32 - sidebar and favicons light dark - 16.0
-2025-04-11 19:47:10 - blue dot print page testing - 7.0
-2025-04-11 19:47:41 - blue dor deployment  - 1.0
-2025-04-14 14:16:26 - blue dot more visiblity of lapsed email results - 4.0
