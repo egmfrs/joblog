@@ -27,6 +27,10 @@ def log_entry():
     root.after(0, _log_entry)
 
 def _log_entry():
+
+    global current_month
+    current_month = datetime.now().replace(day=1)
+
     description = simpledialog.askstring("Input", "Enter description:", parent=root)
     if description is None:
         return
