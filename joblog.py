@@ -158,7 +158,12 @@ def _edit_log_entry():
 
         listbox.delete(0, tk.END)
         for entry in lines:
-            listbox.insert(tk.END, entry.strip())
+            parts = entry.strip().split(" - ", 2)
+            if len(parts) == 3:
+                timestamp, description, number = parts
+                listbox.insert(tk.END, f"{timestamp} - {float(number):05.1f} - {description}")
+            else:
+                listbox.insert(tk.END, entry.strip())
 
     def refresh_listbox():
         listbox.delete(0, tk.END)
@@ -170,7 +175,12 @@ def _edit_log_entry():
             lines.clear()
             lines.extend(refreshed_lines)
             for line in lines:
-                listbox.insert(tk.END, line.strip())
+                parts = line.strip().split(" - ", 2)
+                if len(parts) == 3:
+                    timestamp, description, number = parts
+                    listbox.insert(tk.END, f"{timestamp} - {float(number):05.1f} - {description}")
+                else:
+                    listbox.insert(tk.END, line.strip())  # Fallback for malformed lines
 
             reorder_entries_by_timestamp()
 
