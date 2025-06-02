@@ -159,12 +159,19 @@ try:
             lines.clear()
             lines.extend([entry[1] + "\n" for entry in parsed])
 
+            max_len = max(len(f"{float(line.strip().split(' - ')[2]):.1f}")
+              for line in lines if " - " in line and line.strip().split(" - ")[2].replace('.', '', 1).isdigit())
+
             listbox.delete(0, tk.END)
             for entry in lines:
                 parts = entry.strip().split(" - ", 2)
                 if len(parts) == 3:
                     timestamp, description, number = parts
-                    listbox.insert(tk.END, f"{timestamp} - {float(number):05.1f} - {description}")
+                    num_str = f"{float(number):.1f}"
+                    if float(number) < 10:
+                        num_str = "  " + num_str
+                    padded_number = num_str.rjust(max_len)
+                    listbox.insert(tk.END, f"{timestamp} - {padded_number} - {description}")
                 else:
                     listbox.insert(tk.END, entry.strip())
 
