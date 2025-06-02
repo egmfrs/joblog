@@ -155,13 +155,21 @@ try:
             # Sort by datetime ascending
             parsed.sort(key=lambda x: x[0],reverse=True)
 
-            # Update the listbox and the lines
+            # Update the listbox and the lines            
             lines.clear()
             lines.extend([entry[1] + "\n" for entry in parsed])
 
-            max_len = max(len(f"{float(line.strip().split(' - ')[2]):.1f}")
-              for line in lines if " - " in line and line.strip().split(" - ")[2].replace('.', '', 1).isdigit())
 
+            # Only compute alignment if there are valid entries
+            try:
+                max_len = max(
+                    len(f"{float(line.strip().split(' - ')[2]):.1f}")
+                    for line in lines
+                    if " - " in line and line.strip().split(" - ")[2].replace('.', '', 1).isdigit()
+                )
+            except ValueError:
+                max_len = 5  # Default width
+            
             listbox.delete(0, tk.END)
             for entry in lines:
                 parts = entry.strip().split(" - ", 2)
@@ -199,9 +207,12 @@ try:
 
                 lines.clear()
                 lines.extend(refreshed_lines)
-                reorder_entries_by_timestamp()  # Handles sorting and inserting
-                update_middle_column_count()
-                update_middle_column_sum()
+            else:
+                lines.clear()
+
+            reorder_entries_by_timestamp()  # Handles sorting and inserting
+            update_middle_column_count()
+            update_middle_column_sum()  # ← This line was mistakenly omitted before
 
         log_file = get_log_filename(current_month.strftime("%Y%m"))
 
